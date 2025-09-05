@@ -1,7 +1,5 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import tsconfigPaths from "vite-tsconfig-paths";
-import tagger from "@dhiwise/component-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -10,7 +8,7 @@ export default defineConfig({
   build: {
     outDir: "build",
     chunkSizeWarningLimit: 2000,
-    // Fix asset resolution issues
+    // Fix asset resolution issues for production
     rollupOptions: {
       output: {
         // Ensure consistent naming
@@ -20,13 +18,12 @@ export default defineConfig({
       }
     }
   },
-  plugins: [tsconfigPaths(), react(), tagger()],
+  // Only include essential plugins for production
+  plugins: [react()],
   server: {
     port: "4028",
     host: "0.0.0.0",
     strictPort: true,
     allowedHosts: ['.amazonaws.com', '.builtwithrocket.new']
-  },
-  // Ensure proper base URL for deployment
-  base: './'
+  }
 });
