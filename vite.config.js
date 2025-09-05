@@ -3,12 +3,11 @@ import react from "@vitejs/plugin-react";
 import tsconfigPaths from "vite-tsconfig-paths";
 import tagger from "@dhiwise/component-tagger";
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  base: "./", // 👈 ensures relative asset paths for Vercel
+  base: "./", // 👈 ensures relative asset paths
 
   build: {
-    outDir: "build", // outputs to build/ instead of dist/
+    outDir: "build",
     chunkSizeWarningLimit: 2000,
   },
 
